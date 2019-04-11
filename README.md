@@ -6,7 +6,7 @@ Well, I wrote a simple Python port that works the same way (ish). Feel free to s
 
 The result is a wordcloud like this one:
 
-![Image showing an example of my wordcloud generated using the script.](images/my-wordcloud.png)
+![Image showing an example of my wordcloud generated using the script.](images/my_wordcloud.png)
 
 ## Requirements
 
