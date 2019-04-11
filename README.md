@@ -4,7 +4,7 @@ Remember TwitterSheep.com and how it used to work?
 
 Well, I wrote a simple Python port that works the same way (ish). Feel free to suggest changes via pull requests or issues.
 
-The result is a wordcloud like this one:
+The result is a wordcloud like this one (based on [my twitter account](http://www.twitter.com/kallewesterling)):
 
 ![Image showing an example of my wordcloud generated using the script.](images/my_wordcloud.png)
 
