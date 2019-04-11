@@ -73,3 +73,39 @@ If you want to show words from bios of only your followers (the original intent 
 ```python
 herd.save_wordcloud(only_followers=True)
 ```
+
+## Customizations
+
+### Saving to a Specific File
+
+Sometimes you may want to save your wordcloud to a specific place. You can do so by adding the option `path` and provide a valid path to the `save_wordcloud()` method:
+
+```python
+herd.save_wordcloud(path="../Desktop/my_real_unique_wordcloud.png")
+```
+
+Make sure that the path that you're adding the file to exists and that the file ending is `.png` as you will be saving a PNG file.
+
+
+### Adding Stopwords
+
+If you want to add stopwords to remove certain words from your wordcloud—say, for instance, if you already knew that some keywords would occur but you wanted to make clearer which ones were unexpected.
+
+In the following example, I have chosen to remove a few keywords that I already knew would occur frequently in my follower's bios: theatre, digital, digital humanities, cuny, phd, candidate, phd student, student, and new york. I do so by adding the option `extend_stopwords` to the function and providing it with a list of the words:
+
+```python
+herd.save_wordcloud(only_followers=True, extend_stopwords=['theatre', 'digital', 'digital humanities', 'cuny', 'phd', 'candidate', 'phd student', 'student', 'new york'])
+```
+
+The result can be seen in the following two wordclouds:
+
+No added stopwords             |  After adding stopwords
+:-------------------------:|:-------------------------:
+![](images/my_wordcloud.png)  |  ![](images/my_wordcloud_after_filtering.png)
+
+
+### Getting All The Bios
+
+If you want to see a list of all the bios in your herd, you can do so by accessing the list variables: `herd.friend_bios` and `herd.follower_bios`.
+
+If you want to see all of the bios, you can access them through the list variable `herd.bios`.
