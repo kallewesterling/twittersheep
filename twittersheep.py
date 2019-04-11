@@ -59,7 +59,7 @@ class TwitterSheep(object):
         
         
     def _get_friend_ids(self):
-        cache_file = self.cache_path.joinpath(f"_friends")
+        cache_file = self.cache_path.joinpath(f"_{self.username}_friends")
         if not cache_file.exists():
             if not self.quiet: print(f"Downloading friend list for {self.username}...")
             
@@ -76,16 +76,21 @@ class TwitterSheep(object):
         
         
     def _get_follower_ids(self):
-        cache_file = self.cache_path.joinpath(f"_followers")
+        cache_file = self.cache_path.joinpath(f"_{self.username}_followers")
         if not cache_file.exists():
             if not self.quiet: print(f"Downloading follower list for {self.username}...")
             
             ids = []
+            repeat = False
+            
             with open(cache_file, "w+") as file:
                 file.write("")
                 
             pages = tweepy.Cursor(self.api.followers_ids, screen_name=self.username).pages()
             for page in pages:
+                if repeat: 
+                    if not self.quiet: print(f"Waiting 60 seconds...")
+                    time.sleep(60)
                 ids.extend(page)
                 _list = []
                 for friend in page:
@@ -94,8 +99,7 @@ class TwitterSheep(object):
                 with open(cache_file, "a") as file:
                     file.write("\n".join(_list))
                 
-                if not self.quiet: print(f"Waiting 60 seconds...")
-                time.sleep(60)
+                repeat = True
                 
         if not self.quiet: print(f"Reading follower list...")
         with open(cache_file, "r") as file:
@@ -123,7 +127,7 @@ class TwitterSheep(object):
         return(_descriptions)
 
     
-    def save_wordcloud(self, path="./wordcloud.png", only_followers=False, only_friends=False):
+    def save_wordcloud(self, path="./wordcloud.png", only_followers=False, only_friends=False, extend_stopwords=[]):
         if only_followers and only_friends: raise RuntimeError("You have to choose between followers and friends for the wordcloud. Another option is to remove the `only_followers` and `only_friends` setting altogether, to generate the wordcloud from all the bios.")
 
         # Set up the actual text we'll use
@@ -139,6 +143,8 @@ class TwitterSheep(object):
 
         # remove stopwords
         stopwords = set(STOPWORDS)
+        stopwords.update(["https","co","t"]) # remove all the t.co links
+        stopwords.update(extend_stopwords) # remove all the t.co links
         
         wordcloud = WordCloud(stopwords=stopwords, max_words=1000, width=1500, height=1000, max_font_size=100).generate(text)
         plt.figure( figsize=(20,10) )
