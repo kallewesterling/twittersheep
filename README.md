@@ -38,28 +38,38 @@ Fill in your Twitter credentials in `config.py`:
 
 Import the TwitterSheep class from the file:
 
-`from twittersheep import TwitterSheep`
+```python
+from twittersheep import TwitterSheep
+```
 
 ### Step 3
 
 Run the TwitterSheep class using the username you want to use:
 
-`herd = TwitterSheep(username="kallewesterling")`
+```python
+herd = TwitterSheep(username="kallewesterling")
+```
 
 It will take some time when you run the script the first time as it has to download all the data from Twitter, and the `tweepy` package will manage the rate limit for you.
 
 If you don't want to see progress bars while the script runs, you can run it with the `quiet` option set to `True`:
 
-`herd = TwitterSheep(username="kallewesterling", quiet=True)`
+```python
+herd = TwitterSheep(username="kallewesterling", quiet=True)
+```
 
 ### Step 4
 
 Save the wordcloud made from all of your followers
 
-`herd.save_wordcloud()`
+```python
+herd.save_wordcloud()
+```
 
 Used with no settings, the script will save a 1500x1000 pixel PNG file based on the top 1000 words in the bios from your followers and your friends (the people you follow) to `wordcloud.png` in the directory where you places `twittersheep.py`.
 
 If you want to show words from bios of only your followers (the original intent of TwitterSheep.com), then use the setting `only_followers` set to `True`:
 
-`herd.save_wordcloud(only_followers=True)`
+```python
+herd.save_wordcloud(only_followers=True)
+```
