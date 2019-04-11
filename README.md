@@ -76,7 +76,7 @@ herd.save_wordcloud(only_followers=True)
 
 ## Customizations
 
-### Saving to a Specific File
+### 1. Saving to a Specific File
 
 Sometimes you may want to save your wordcloud to a specific place. You can do so by adding the option `path` and provide a valid path to the `save_wordcloud()` method:
 
@@ -87,7 +87,7 @@ herd.save_wordcloud(path="../Desktop/my_real_unique_wordcloud.png")
 Make sure that the path that you're adding the file to exists and that the file ending is `.png` as you will be saving a PNG file.
 
 
-### Adding Stopwords
+### 2. Adding Stopwords
 
 If you want to add stopwords to remove certain words from your wordcloud—say, for instance, if you already knew that some keywords would occur but you wanted to make clearer which ones were unexpected.
 
@@ -104,7 +104,7 @@ No added stopwords             |  After adding stopwords
 ![](images/my_wordcloud.png)  |  ![](images/my_wordcloud_after_filtering.png)
 
 
-### Getting All The Bios
+### 3. Getting All The Bios
 
 If you want to see a list of all the bios in your herd, you can do so by accessing the list variables: `herd.friend_bios` and `herd.follower_bios`.
 
