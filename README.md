@@ -22,7 +22,7 @@ You can use `pip install` to install all of the packages above (i.e. `pip instal
 
 ### Step 1
 
-Fill in your Twitter credentials in `config.py`:
+Fill in [your Twitter credentials](https://developer.twitter.com/en/apply-for-access.html) in `config.py`:
 
 ```python
     '''
