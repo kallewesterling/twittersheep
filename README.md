@@ -66,7 +66,7 @@ Save the wordcloud made from all of your followers
 herd.save_wordcloud()
 ```
 
-Used with no settings, the script will save a 1500x1000 pixel PNG file based on the top 1000 words in the bios from your followers and your friends (the people you follow) to `wordcloud.png` in the directory where you places `twittersheep.py`.
+Used with no settings, the script will save a 1500x1000 pixel PNG file based on the top 1000 words in the bios from your followers and your friends (the people you follow) to `wordcloud.png` in the directory where you placed `twittersheep.py`.
 
 If you want to show words from bios of only your followers (the original intent of TwitterSheep.com), then use the setting `only_followers` set to `True`:
 
